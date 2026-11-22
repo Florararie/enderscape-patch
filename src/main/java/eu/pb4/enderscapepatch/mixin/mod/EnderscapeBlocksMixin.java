@@ -10,9 +10,8 @@ import eu.pb4.polymer.blocks.api.BlockModelType;
 import eu.pb4.polymer.common.api.PolymerCommonUtils;
 import eu.pb4.polymer.core.api.block.PolymerBlock;
 import eu.pb4.polymer.virtualentity.api.BlockWithElementHolder;
-import net.minecraft.references.BlockItemId;
+import net.penumbra.enderscape.references.BlockItemId;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
 import net.penumbra.enderscape.Enderscape;
 import net.penumbra.enderscape.block.*;
 import net.minecraft.core.BlockPos;
@@ -31,8 +30,8 @@ import java.util.function.Function;
 
 @Mixin(EnderscapeBlocks.class)
 public class EnderscapeBlocksMixin {
-    @Inject(method = "registerWithItem(Lnet/minecraft/references/BlockItemId;Ljava/util/function/Function;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;Lnet/minecraft/world/item/Item$Properties;)Lnet/minecraft/world/level/block/Block;", at = @At("TAIL"))
-    private static void polymerify1(BlockItemId id, Function<BlockBehaviour.Properties, Block> function, BlockBehaviour.Properties properties, Item.Properties itemProperties, CallbackInfoReturnable<Block> cir) {
+    @Inject(method = "registerWithItem(Lnet/penumbra/enderscape/references/BlockItemId;Ljava/util/function/Function;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)Lnet/minecraft/world/level/block/Block;", at = @At("TAIL"))
+    private static void polymerify1(BlockItemId id, Function<BlockBehaviour.Properties, Block> function, BlockBehaviour.Properties properties, CallbackInfoReturnable<Block> cir) {
         polymerify(id.block().identifier().getPath(), cir.getReturnValue());
     }
 

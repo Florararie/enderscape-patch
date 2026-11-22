@@ -12,7 +12,6 @@ import eu.pb4.polymer.virtualentity.api.attachment.IdentifiedUniqueEntityAttachm
 import eu.pb4.polymer.virtualentity.api.attachment.UniqueIdentifiableAttachment;
 import eu.pb4.polymer.virtualentity.api.data.DisplayEntityData;
 import it.unimi.dsi.fastutil.ints.IntList;
-import net.minecraft.world.entity.EntityTypes;
 import net.penumbra.enderscape.Enderscape;
 import net.penumbra.enderscape.entity.rustle.Rustle;
 import net.minecraft.network.protocol.Packet;
@@ -67,7 +66,7 @@ public record BasePolymerEntity(LivingEntity entity) implements PolymerEntity {
 
     @Override
     public EntityType<?> getPolymerEntityType(PacketContext packetContext) {
-        return EntityTypes.ITEM_DISPLAY;
+        return EntityType.ITEM_DISPLAY;
     }
 
     @Override

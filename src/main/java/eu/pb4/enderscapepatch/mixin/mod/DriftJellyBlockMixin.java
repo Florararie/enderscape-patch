@@ -33,7 +33,7 @@ public abstract class DriftJellyBlockMixin {
     @Shadow protected abstract void playBounceEffects(Level level, BlockPos pos);
 
     @Inject(method = "updateEntityMovementAfterFallOn", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;gameEvent(Lnet/minecraft/core/Holder;)V", shift = At.Shift.AFTER))
-    private void fixBounce(Entity entity, CallbackInfo ci) {
+    private void fixBounce(BlockGetter level, Entity entity, CallbackInfo ci) {
         if (entity instanceof ServerPlayer player) {
             player.connection.send(new ClientboundPlayerPositionPacket(0,
                     new PositionMoveRotation(Vec3.ZERO, new Vec3(0, entity.getDeltaMovement().y, 0), 0, 0),
